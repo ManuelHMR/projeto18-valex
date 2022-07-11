@@ -1,4 +1,4 @@
-import { connection } from "../config/database.js";
+import { connection } from "../config/database";
 
 export interface Employee {
   id: number;

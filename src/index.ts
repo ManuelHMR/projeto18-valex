@@ -1,9 +1,9 @@
 import express from "express";
-import "express-async-errors";
 import cors from "cors";
+import "express-async-errors";
 
-import router from "./routers/index.js";
-import errorHandler from "./middlewares/errorHandler.js";
+import router from "./routers/index";
+import errorHandler from "./middlewares/errorHandler";
 
 const app = express();
 app.use(cors());
