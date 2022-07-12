@@ -1,7 +1,4 @@
 import { Request, Response } from "express";
-
-import axios from "axios";
-
 import { insert, TransactionTypes } from "../repositories/cardRepository";
 import { ativateCard, ativateCardBusinessRules } from "../services/ativateCardServices";
 import { checkIfWorkerExist, checkIfWorkerAlreadyHaveCard, generateCardData } from "../services/createCardServices";
