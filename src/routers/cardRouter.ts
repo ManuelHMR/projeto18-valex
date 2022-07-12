@@ -31,7 +31,7 @@ cardRouter.post(
 );
 
 cardRouter.get(
-    "/transations/:id",
+    "/transactions/:id",
     getTransactionsController
 );
 
@@ -49,6 +49,7 @@ cardRouter.post(
 
 cardRouter.post(
     "/recharge",
+    apiKeyValidation,
     validateSchema(transactionSchema),
     checkValue,
     rechargeController

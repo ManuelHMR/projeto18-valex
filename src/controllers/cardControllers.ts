@@ -69,13 +69,14 @@ export async function unblockCardController(req: Request, res: Response) {
 };
 
 export async function rechargeController(req: Request, res: Response){
+    const { businessId } = res.locals;
     const { id, quantity } : { id: number, quantity:number }= req.body;
-    charge(id, quantity);
+    await charge(id, quantity, businessId);
     res.sendStatus(200);
 };
 
 export async function expenseController(req: Request, res: Response){
     const { id, quantity, password, businessId } : { id: number, quantity:number, password: string, businessId: number }= req.body;
-    expense(id, quantity, password, businessId);
+    await expense(id, quantity, password, businessId);
     res.sendStatus(200);
 };

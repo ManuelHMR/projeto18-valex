@@ -11,5 +11,6 @@ export async function apiKeyValidation( req: Request, res: Response, next: NextF
             message:"Invalid API key!"
         };
     };
+    res.locals.businessId = verification.id; 
     next();
 };

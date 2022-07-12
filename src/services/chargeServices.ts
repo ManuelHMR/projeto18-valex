@@ -6,13 +6,25 @@ import * as businessRepository from "../repositories/businessRepository";
 import { checkPassword } from "../utils/checkPassword";
 import { TransactionTypes } from "../repositories/cardRepository";
 import { getTransactionsService } from "./transactionServices";
+import { findById } from "../repositories/employeeRepository";
 
-export async function charge(id: number, quantity: number) {
+export async function charge(id: number, quantity: number, businessId: number) {
     const card = await checkIfCardExist(id);
+    await checkIfWorkInTheBusiness(card.employeeId, businessId);
     checkIfBlocked(card.isBlocked);
     checkExpirationDate(card.expirationDate);
     checkIfActivated(card);
     await rechargeRepository.insert({cardId:id, amount:quantity })
+};
+
+async function checkIfWorkInTheBusiness(employeeId: number, businessId: number){
+    const employee = await findById(employeeId);
+    if(employee.companyId !== businessId){
+        throw{
+            status:400,
+            message:"Not your worker!"
+        };
+    };
 };
 
 function checkIfBlocked(param : boolean){
