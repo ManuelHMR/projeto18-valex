@@ -87,6 +87,7 @@ export function generateCardData(worker: any){
         cardholderName,
         number,
         expirationDate,
-        secutityCode: cryptr.encrypt(secutityCode)
+        secutityCode: cryptr.encrypt(secutityCode),
+        notEncryptedCVC: secutityCode
     };
 }

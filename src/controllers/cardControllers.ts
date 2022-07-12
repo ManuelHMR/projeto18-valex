@@ -24,7 +24,7 @@ export async function createCardController(req: Request, res: Response) {
         type: cardType,
     }
     await insert(card);
-    return res.sendStatus(201); 
+    return res.status(201).send(genetetedData.notEncryptedCVC); 
 };
 
 export async function ativateCardCrontroller(req: Request, res: Response) {
