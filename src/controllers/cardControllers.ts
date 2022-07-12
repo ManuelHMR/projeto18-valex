@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import { insert, TransactionTypes } from "../repositories/cardRepository";
+import { ativateCard, ativateCardBusinessRules } from "../services/ativateCardServices";
 import { checkIfWorkerExist, checkIfWorkerAlreadyHaveCard, generateCardData } from "../services/createCardServices";
 
 export async function createCardController(req: Request, res: Response) {
@@ -22,4 +23,23 @@ export async function createCardController(req: Request, res: Response) {
     }
     await insert(card);
     return res.sendStatus(201); 
+};
+
+export async function ativateCardCrontroller(req: Request, res: Response) {
+    const {
+        number, 
+        cardholderName, 
+        password, 
+        expirationDate, 
+        securityCode} 
+    : {
+        number: string, 
+        cardholderName: string, 
+        expirationDate: string , 
+        password: string, 
+        securityCode: string
+    } = req.body;
+    const id = await ativateCardBusinessRules(number, cardholderName, expirationDate , password, securityCode);
+    await ativateCard(id, password);
+    return res.sendStatus(200);
 };

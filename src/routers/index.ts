@@ -1,8 +1,8 @@
 import express from "express";
 
-import createCardRouter from "./createCardRouter";
+import cardRouter from "./cardRouter";
 
 const router = express.Router();
-router.use(createCardRouter);
+router.use(cardRouter);
 
 export default router;

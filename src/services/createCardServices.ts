@@ -52,7 +52,7 @@ function adaptName(info: any){
 
 function generateCardNumber(){
     const accountNumber = [];
-    for(let i = 0; i < 5; i++){
+    for(let i = 0; i < 4; i++){
         const number = faker.finance.account(5)
         accountNumber.push(number);
     }
