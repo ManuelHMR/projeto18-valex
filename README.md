@@ -37,7 +37,7 @@ Body
 :::::::::Para ver as transações:::::::::
 
 enviar req GET para
-/transations/:id    <====== id do cartao
+/transactions/:id    <====== id do cartao
 
 :::::::::Para bloquear um cartão:::::::::
 enviar req POST para
