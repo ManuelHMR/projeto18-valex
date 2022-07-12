@@ -4,10 +4,10 @@
  - POST /create-card
 
 	- necessário headers. { "x-api-key" : "zadKLNx.DzvOVjQH01TumGl2urPjPQSxUbf67vs0"}
-	- body: {
+	- body: {</br>
 	    "workerIdentifier": 1,         <= id do usuário dono do cartão </br>
 	    "cardType": "transport" </br>
-	    }
+	    } </br>
 ATENÇÃO: Você receberá o numero do cartao, cvc e a data de validade do cartão como uma resposta da api.
 É o único momento que a aplicação enviará ele decriptado, use para as
 próximas requisições
@@ -16,13 +16,13 @@ próximas requisições
 
 -> Para ativar um cartão
  - POST /ativate-card
-	-body {
+	-body {</br>
 		"number": XXXXX XXXXX XXXXX XXXXX <==== Numero do cartao, </br>
 		"cardholderName" "Fulano S Driven" <=== Nome do Cartao, </br>
 		"expirationDate": "XX-XX" <============ Data que expira o cartao, </br>
 		"securityCode": "589",  <============== Use o cvc que foi recebido na req de criar cartão </br>
-		"password":"1234"
-		}
+		"password":"1234" </br>
+		} </br>
 
 
 
@@ -33,10 +33,10 @@ próximas requisições
 
 -> Para bloquear um cartão
  - POST /block-card
-	- body {
+	- body { </br>
 		"id":2,          <=============== id do cartão </br>
    		"password":"1234" </br>
-		}
+		} </br>
 		
 		
 
@@ -52,18 +52,18 @@ próximas requisições
  -> Para recarregar um cartão
  - POST /recharge
 	- necessário headers. { "x-api-key" : "zadKLNx.DzvOVjQH01TumGl2urPjPQSxUbf67vs0"}
-	- body {
+	- body { </br>
 		"id": 1,          <=============== id do cartão
-		"quantity": 300
-		}
+		"quantity": 300 </br>
+		} </br>
 		
 		
 		
 -> Para registrar um gasto
  - POST /payment
-	-body {
-		"id": 1,       <=============== id do cartão
-		"password":"1234",
-		"businessId": 1,  <=============== lembre de respeitar o tipo do negócio e sua compactibilidade com o cartão
-		"quantity": 300
-		}
+	-body { </br>
+		"id": 1,       <=============== id do cartão </br>
+		"password":"1234", </br>
+		"businessId": 1,  <=============== lembre de respeitar o tipo do negócio e sua compactibilidade com o cartão </br>
+		"quantity": 300 </br>
+		} </br>
