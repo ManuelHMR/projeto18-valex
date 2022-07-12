@@ -23,15 +23,12 @@ async function checkCardId(id:number){
 
 function makeBalance(recharges: rechargeRepository.Recharge[], transactions: paymentRepository.PaymentWithBusinessName[]){
     let totalPayment = 0;
-    let totalCredits = 0;
-  
+    let totalRecharge = 0;
     transactions.forEach((payment: paymentRepository.PaymentWithBusinessName) => {
-      totalPayment = totalPayment + payment.amount ;
+      totalPayment += payment.amount ;
     });
-  
     recharges.forEach((credit:rechargeRepository.Recharge) => {
-      totalCredits = totalCredits + credit.amount ;
+        totalRecharge += credit.amount ;
     });
-  
-    return totalCredits - totalPayment;
+    return totalRecharge - totalPayment;
 };
