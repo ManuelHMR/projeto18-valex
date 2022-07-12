@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { insert, TransactionTypes } from "../repositories/cardRepository";
 import { ativateCard, ativateCardBusinessRules } from "../services/ativateCardServices";
 import { checkIfWorkerExist, checkIfWorkerAlreadyHaveCard, generateCardData } from "../services/createCardServices";
+import { getTransactionsService } from "../services/transactionServices";
 
 export async function createCardController(req: Request, res: Response) {
     const {workerIdentifier : employeeId, cardType} : {workerIdentifier: number, cardType: TransactionTypes} = req.body;
@@ -42,4 +43,10 @@ export async function ativateCardCrontroller(req: Request, res: Response) {
     const id = await ativateCardBusinessRules(number, cardholderName, expirationDate , password, securityCode);
     await ativateCard(id, password);
     return res.sendStatus(200);
+};
+
+export async function getTransactionsController (req: Request, res: Response) {
+    const id  = parseInt(req.params.id);
+    const balance = await getTransactionsService(id);
+    res.send(balance);
 };
