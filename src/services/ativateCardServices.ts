@@ -24,7 +24,7 @@ export async function ativateCardBusinessRules(number: string, cardholderName: s
     return result.id;
 };
 
-function checkExpirationDate(date:string){
+export function checkExpirationDate(date:string){
     const expiration = parseInt(date.split("-")[1]);
     const now = parseInt(dayjs().format("YY"));
     if(expiration - now < 0){

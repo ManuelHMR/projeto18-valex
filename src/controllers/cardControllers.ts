@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { insert, TransactionTypes } from "../repositories/cardRepository";
 import { ativateCard, ativateCardBusinessRules } from "../services/ativateCardServices";
 import { checkIfWorkerExist, checkIfWorkerAlreadyHaveCard, generateCardData } from "../services/createCardServices";
+import { toggleCard } from "../services/toggleBlock";
 import { getTransactionsService } from "../services/transactionServices";
 
 export async function createCardController(req: Request, res: Response) {
@@ -49,4 +50,16 @@ export async function getTransactionsController (req: Request, res: Response) {
     const id  = parseInt(req.params.id);
     const balance = await getTransactionsService(id);
     res.send(balance);
+};
+
+export async function blockCardController(req: Request, res: Response) {
+    const {id, password} : {id: number, password: string} = req.body;
+    toggleCard(id, password, "block");
+    return res.sendStatus(200);
+};
+
+export async function unblockCardController(req: Request, res: Response) {
+    const {id, password} : {id: number, password: string} = req.body;
+    toggleCard(id, password, "unblock");
+    return res.sendStatus(200);
 };
