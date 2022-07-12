@@ -3,8 +3,8 @@
 -> Para criar um cartão
  - POST /create-card
 
-	- necessário headers. { "x-api-key" : "zadKLNx.DzvOVjQH01TumGl2urPjPQSxUbf67vs0"}
-	- body: {</br>
+	- necessário headers. { "x-api-key" : "zadKLNx.DzvOVjQH01TumGl2urPjPQSxUbf67vs0"} </br>
+	 </br> - body: {</br>
 	    "workerIdentifier": 1,         <= id do usuário dono do cartão </br>
 	    "cardType": "transport" </br>
 	    } </br>
@@ -16,7 +16,7 @@ próximas requisições
 
 -> Para ativar um cartão
  - POST /ativate-card
-	-body {</br>
+	</br> -body {</br>
 		"number": XXXXX XXXXX XXXXX XXXXX <==== Numero do cartao, </br>
 		"cardholderName" "Fulano S Driven" <=== Nome do Cartao, </br>
 		"expirationDate": "XX-XX" <============ Data que expira o cartao, </br>
@@ -33,7 +33,7 @@ próximas requisições
 
 -> Para bloquear um cartão
  - POST /block-card
-	- body { </br>
+	</br> - body { </br>
 		"id":2,          <=============== id do cartão </br>
    		"password":"1234" </br>
 		} </br>
@@ -42,7 +42,7 @@ próximas requisições
 
 -> Para desbloquear um cartão
  - POST /unblock-card
-	- body {
+	</br> - body {
 		"id":2,          <=============== id do cartão </br>
 		"password":"1234" </br>
 		}
@@ -51,8 +51,8 @@ próximas requisições
 
  -> Para recarregar um cartão
  - POST /recharge
-	- necessário headers. { "x-api-key" : "zadKLNx.DzvOVjQH01TumGl2urPjPQSxUbf67vs0"}
-	- body { </br>
+	 - necessário headers. { "x-api-key" : "zadKLNx.DzvOVjQH01TumGl2urPjPQSxUbf67vs0"}</br>
+	</br> - body { </br>
 		"id": 1,          <=============== id do cartão
 		"quantity": 300 </br>
 		} </br>
