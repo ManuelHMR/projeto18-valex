@@ -7,11 +7,17 @@ export async function toggleCard(id: number, password: string, action: "block" |
     const card = await checkIfCardExist(id);
     checkExpirationDate(card.expirationDate);
     checkBlock(card.isBlocked, action);
+    if(!card.password){
+        throw{
+            status:400,
+            message:"Card not activated!"
+        }
+    }
     await checkPassword(password, card.password as string);
     await toggleBlock(id, action);
 };
 
-async function checkIfCardExist(id: number){
+export async function checkIfCardExist(id: number){
     const check = await findById(id);
     if(!check){
         throw{

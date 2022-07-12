@@ -1,4 +1,4 @@
-import { NextFunction, Request } from "express";
+import { NextFunction, Request, Response } from "express";
 
 export function checkValue(req: Request, res: Response, next: NextFunction){
     const { quantity } = req.body;

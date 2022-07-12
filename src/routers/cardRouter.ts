@@ -9,11 +9,12 @@ import {
     blockCardController, 
     createCardController, 
     getTransactionsController, 
+    rechargeController, 
     unblockCardController
 } from "../controllers/cardControllers";
 import idPasswordSchema from "../schemas/idPasswordSchema";
 import transactionSchema from "../schemas/transactionSchema";
-import { checkValue } from "../middlewares/checkValue";
+import {checkValue} from "../middlewares/checkValue";
 
 const cardRouter = express.Router();
 cardRouter.post(
@@ -50,7 +51,14 @@ cardRouter.post(
     "/recharge",
     validateSchema(transactionSchema),
     checkValue,
-    
+    rechargeController
+);
+
+cardRouter.post(
+    "/expense",
+    validateSchema(transactionSchema),
+    checkValue,
+    rechargeController
 );
 
 export default cardRouter;

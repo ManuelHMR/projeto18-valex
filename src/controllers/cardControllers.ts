@@ -7,6 +7,7 @@ import { ativateCard, ativateCardBusinessRules } from "../services/ativateCardSe
 import { checkIfWorkerExist, checkIfWorkerAlreadyHaveCard, generateCardData } from "../services/createCardServices";
 import { toggleCard } from "../services/toggleBlock";
 import { getTransactionsService } from "../services/transactionServices";
+import { charge, expense } from "../services/chargeServices";
 
 export async function createCardController(req: Request, res: Response) {
     const {workerIdentifier : employeeId, cardType} : {workerIdentifier: number, cardType: TransactionTypes} = req.body;
@@ -66,4 +67,14 @@ export async function unblockCardController(req: Request, res: Response) {
     return res.sendStatus(200);
 };
 
-export async function 
+export async function rechargeController(req: Request, res: Response){
+    const { id, quantity } : { id: number, quantity:number }= req.body;
+    charge(id, quantity);
+    res.sendStatus(200);
+};
+
+export async function expenseController(req: Request, res: Response){
+    const { id, quantity, password, businessId } : { id: number, quantity:number, password: string, businessId: number }= req.body;
+    expense(id, quantity, password, businessId);
+    res.sendStatus(200);
+};
