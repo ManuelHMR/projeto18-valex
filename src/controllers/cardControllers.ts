@@ -24,7 +24,11 @@ export async function createCardController(req: Request, res: Response) {
         type: cardType,
     }
     await insert(card);
-    return res.status(201).send(genetetedData.notEncryptedCVC); 
+    return res.status(201).send({ 
+        cvc:genetetedData.notEncryptedCVC,
+        number: genetetedData.number,
+        expires: genetetedData.expirationDate
+    }); 
 };
 
 export async function ativateCardCrontroller(req: Request, res: Response) {
