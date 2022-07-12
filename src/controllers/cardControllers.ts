@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 
+import axios from "axios";
+
 import { insert, TransactionTypes } from "../repositories/cardRepository";
 import { ativateCard, ativateCardBusinessRules } from "../services/ativateCardServices";
 import { checkIfWorkerExist, checkIfWorkerAlreadyHaveCard, generateCardData } from "../services/createCardServices";
@@ -54,12 +56,14 @@ export async function getTransactionsController (req: Request, res: Response) {
 
 export async function blockCardController(req: Request, res: Response) {
     const {id, password} : {id: number, password: string} = req.body;
-    toggleCard(id, password, "block");
+    await toggleCard(id, password, "block");
     return res.sendStatus(200);
 };
 
 export async function unblockCardController(req: Request, res: Response) {
     const {id, password} : {id: number, password: string} = req.body;
-    toggleCard(id, password, "unblock");
+    await toggleCard(id, password, "unblock");
     return res.sendStatus(200);
 };
+
+export async function 

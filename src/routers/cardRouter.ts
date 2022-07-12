@@ -12,6 +12,8 @@ import {
     unblockCardController
 } from "../controllers/cardControllers";
 import idPasswordSchema from "../schemas/idPasswordSchema";
+import transactionSchema from "../schemas/transactionSchema";
+import { checkValue } from "../middlewares/checkValue";
 
 const cardRouter = express.Router();
 cardRouter.post(
@@ -42,6 +44,13 @@ cardRouter.post(
     "/unblock-card",
     validateSchema(idPasswordSchema),
     unblockCardController
+);
+
+cardRouter.post(
+    "/recharge",
+    validateSchema(transactionSchema),
+    checkValue,
+    
 );
 
 export default cardRouter;
